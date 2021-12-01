@@ -4,36 +4,62 @@ namespace Employees
 {
     internal class Program
     {
+        static PayRoll payRoll = new PayRoll();
+        
         static void Main(string[] args)
         {
-            Robot robot = new Robot(100, "Kalle", 25);
-            Robot robot2 = new Robot(50, "Eva", 20);
-            //Robot r = new Robot();
-            //robot.SetName("Nisse");
-            //string name = robot.GetName();
-            
-              robot.Age = -11;
-            //try
-            //{
-            //}
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine("Wrong age " + e.Message);
-            //}
+            SeedData();
+            //Employee employee = new Employee(name: "Kalle", salary: 20000);
 
-            int[] arr = { 2, 3, 4, 5, 6, 7, 8 };
+            do
+            {
+                ShowMainMeny();
 
-            int x = arr[100];
+                var input = Console.ReadLine();
+                switch (input)
+                {
+                    case "1":
 
-            robot = null;
+                        break;
+                    case "2":
+                        PrintEmplyees();
+                        break;
 
-            var age = robot?.Age;
+                    case "3":
+                        Environment.Exit(0);
+                        break;
 
-            //int age = robot2.Age;
+                    default:
+                        break;
+                }
 
-            //robot.Age2 = 25;
-            //var age2  = robot2.Age2;
-            
+            } while (true);
+
+           
+        }
+
+        private static void PrintEmplyees()
+        {
+            var employees = payRoll.GetEmployees();
+            foreach (var emp in employees)
+            {
+                Console.WriteLine(emp.ToString());
+            }
+        }
+
+        private static void ShowMainMeny()
+        {
+            Console.WriteLine("1: add employee");
+            Console.WriteLine("2: print employee");
+            Console.WriteLine("3: quit");
+        }
+
+        private static void SeedData()
+        {
+            payRoll.AddEmployee("Kalle", 25000);
+            payRoll.AddEmployee("Nisse", 20000);
+            payRoll.AddEmployee("Anna", 30000);
+            payRoll.AddEmployee("Lena", 35000);
         }
     }
 }
