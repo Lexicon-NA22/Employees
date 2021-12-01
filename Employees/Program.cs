@@ -19,7 +19,7 @@ namespace Employees
                 switch (input)
                 {
                     case "1":
-
+                        AddEmployee();
                         break;
                     case "2":
                         PrintEmplyees();
@@ -38,9 +38,56 @@ namespace Employees
            
         }
 
+        private static void AddEmployee()
+        {
+            Console.WriteLine("Add an employee");
+            bool success = false;
+            string name;
+
+            do
+            {
+                Console.WriteLine("Name: ");
+                name = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(name))
+                {
+                    Console.WriteLine("You must enter a name");
+                }
+                else
+                {
+                    success = true;
+                }
+
+            } while (!success);
+
+            bool success2 = false;
+            string salary;
+
+            do
+            {
+                Console.WriteLine("Salary: ");
+                salary = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(name))
+                {
+                    Console.WriteLine("You must enter a salary");
+                }
+                else
+                {
+                    success2 = true;
+                }
+
+
+            } while (!success2);
+
+           payRoll.AddEmployee(name, int.Parse(salary));
+
+        }
+
         private static void PrintEmplyees()
         {
             var employees = payRoll.GetEmployees();
+
             foreach (var emp in employees)
             {
                 Console.WriteLine(emp.ToString());

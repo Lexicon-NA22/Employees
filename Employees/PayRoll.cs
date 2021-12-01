@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Employees
 {
@@ -20,7 +21,7 @@ namespace Employees
 
         public List<Employee> GetEmployees()
         {
-            return payroll;
+            return payroll.ToList();
         }
     }
 }
