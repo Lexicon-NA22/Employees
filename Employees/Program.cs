@@ -9,7 +9,6 @@ namespace Employees
         static void Main(string[] args)
         {
             SeedData();
-            //Employee employee = new Employee(name: "Kalle", salary: 20000);
 
             do
             {
@@ -25,7 +24,7 @@ namespace Employees
                         PrintEmplyees();
                         break;
 
-                    case "3":
+                    case "Q":
                         Environment.Exit(0);
                         break;
 
@@ -40,12 +39,18 @@ namespace Employees
 
         private static void AddEmployee()
         {
-            Console.WriteLine("Add an employee");
-            string name = Util.AskForString("Name");
-            uint salary = Util.AskForUInt("Salary");
-           
+            do
+            {
+                Console.WriteLine("Add an employee, Q for quit");
+                string name = Util.AskForString("Name");
 
-            payRoll.AddEmployee(name, salary);
+                if (name.Equals("Q")) break;
+
+                uint salary = Util.AskForUInt("Salary");
+
+                payRoll.AddEmployee(name, salary);
+
+            } while (true);
 
         }
 
@@ -63,7 +68,7 @@ namespace Employees
         {
             Console.WriteLine("1: add employee");
             Console.WriteLine("2: print employee");
-            Console.WriteLine("3: quit");
+            Console.WriteLine("Q: quit");
         }
 
         private static void SeedData()

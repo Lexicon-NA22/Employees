@@ -37,8 +37,8 @@ namespace Employees
             do
             {
                 string input = AskForString(prompt);
-                if(uint.TryParse(input, out uint answer))
-                                    return answer;
+                if(uint.TryParse(input, out uint answer)) return answer;
+
             } while (true);
         }
     }
