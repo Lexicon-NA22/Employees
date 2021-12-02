@@ -5,6 +5,7 @@ namespace Employees
     internal class Program
     {
         static PayRoll payRoll = new PayRoll();
+        static IUI ui = new ConsoleUI();
 
         static void Main(string[] args)
         {
@@ -13,40 +14,44 @@ namespace Employees
             do
             {
                 ShowMainMeny();
-
-                var input = Console.ReadLine();
-                switch (input)
-                {
-                    case "1":
-                        AddEmployee();
-                        break;
-                    case "2":
-                        PrintEmplyees();
-                        break;
-
-                    case "Q":
-                        Environment.Exit(0);
-                        break;
-
-                    default:
-                        break;
-                }
+                UserInput();
 
             } while (true);
 
 
         }
 
+        private static void UserInput()
+        {
+            var input = ui.GetStringInput();
+            switch (input)
+            {
+                case "1":
+                    AddEmployee();
+                    break;
+                case "2":
+                    PrintEmplyees();
+                    break;
+
+                case "Q":
+                    Environment.Exit(0);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
         private static void AddEmployee()
         {
             do
             {
-                Console.WriteLine("Add an employee, Q for quit");
-                string name = Util.AskForString("Name");
+                ui.PrintString("Add an employee, Q for quit");
+                string name = Util.AskForString("Name", ui);
 
                 if (name.Equals("Q")) break;
 
-                uint salary = Util.AskForUInt("Salary");
+                uint salary = Util.AskForUInt("Salary", ui);
 
                 payRoll.AddEmployee(name, salary);
 
@@ -60,15 +65,15 @@ namespace Employees
 
             foreach (var emp in employees)
             {
-                Console.WriteLine(emp.ToString());
+                ui.PrintString(emp.ToString());
             }
         }
 
         private static void ShowMainMeny()
         {
-            Console.WriteLine("1: add employee");
-            Console.WriteLine("2: print employee");
-            Console.WriteLine("Q: quit");
+            ui.PrintString("1: add employee");
+            ui.PrintString("2: print employee");
+            ui.PrintString("Q: quit");
         }
 
         private static void SeedData()
