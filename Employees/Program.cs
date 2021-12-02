@@ -5,7 +5,7 @@ namespace Employees
     internal class Program
     {
         static PayRoll payRoll = new PayRoll();
-        
+
         static void Main(string[] args)
         {
             SeedData();
@@ -35,52 +35,17 @@ namespace Employees
 
             } while (true);
 
-           
+
         }
 
         private static void AddEmployee()
         {
             Console.WriteLine("Add an employee");
-            bool success = false;
-            string name;
+            string name = Util.AskForString("Name");
+            uint salary = Util.AskForUInt("Salary");
+           
 
-            do
-            {
-                Console.WriteLine("Name: ");
-                name = Console.ReadLine();
-
-                if (string.IsNullOrWhiteSpace(name))
-                {
-                    Console.WriteLine("You must enter a name");
-                }
-                else
-                {
-                    success = true;
-                }
-
-            } while (!success);
-
-            bool success2 = false;
-            string salary;
-
-            do
-            {
-                Console.WriteLine("Salary: ");
-                salary = Console.ReadLine();
-
-                if (string.IsNullOrWhiteSpace(name))
-                {
-                    Console.WriteLine("You must enter a salary");
-                }
-                else
-                {
-                    success2 = true;
-                }
-
-
-            } while (!success2);
-
-           payRoll.AddEmployee(name, int.Parse(salary));
+            payRoll.AddEmployee(name, salary);
 
         }
 
@@ -107,6 +72,9 @@ namespace Employees
             payRoll.AddEmployee("Nisse", 20000);
             payRoll.AddEmployee("Anna", 30000);
             payRoll.AddEmployee("Lena", 35000);
+            payRoll.AddEmployee(new Employee("Lena", 35000));
         }
     }
 }
+
+//Clean upp ctrl k d

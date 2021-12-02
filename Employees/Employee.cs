@@ -3,11 +3,11 @@
     public class Employee
     {
         public string Name { get; }
-        public int Salary { get; }
+        public uint Salary { get; }
 
        // public static int Count;
 
-        public Employee(string name, int salary)
+        public Employee(string name, uint salary)
         {
             Name = name;
             Salary = salary;

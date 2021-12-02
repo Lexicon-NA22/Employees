@@ -12,11 +12,18 @@ namespace Employees
             payroll = new List<Employee>();
         }
 
-        public void AddEmployee(string name, int salary)
+        public void AddEmployee(string name, uint salary)
         {
             //Validate
             Employee employee = new Employee(name, salary);
             payroll.Add(employee);
+        }    
+        
+        public void AddEmployee(Employee emp)
+        {
+            //Validate
+           // Employee employee = new Employee(name, salary);
+            payroll.Add(emp);
         }
 
         public List<Employee> GetEmployees()

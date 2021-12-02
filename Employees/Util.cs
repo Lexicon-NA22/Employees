@@ -11,14 +11,14 @@ namespace Employees
         public static string AskForString(string prompt)
         {
             bool success = false;
-            string name;
+            string answer;
 
             do
             {
                 Console.WriteLine($"{prompt}: ");
-                name = Console.ReadLine();
+                answer = Console.ReadLine();
 
-                if (string.IsNullOrWhiteSpace(name))
+                if (string.IsNullOrWhiteSpace(answer))
                 {
                     Console.WriteLine($"You must enter a {prompt}");
                 }
@@ -29,7 +29,17 @@ namespace Employees
 
             } while (!success);
 
-            return name;
+            return answer;
+        }
+
+        public static uint AskForUInt(string prompt)
+        {
+            do
+            {
+                string input = AskForString(prompt);
+                if(uint.TryParse(input, out uint answer))
+                                    return answer;
+            } while (true);
         }
     }
 }
