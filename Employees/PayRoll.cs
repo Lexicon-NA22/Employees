@@ -5,13 +5,16 @@ namespace Employees
 {
     public class PayRoll
     {
+        //private fält
         private List<Employee> payroll;
 
+        //Konstruktor
         public PayRoll()
         {
             payroll = new List<Employee>();
         }
 
+        //Metoder
         public void AddEmployee(string name, uint salary)
         {
             //Validate
