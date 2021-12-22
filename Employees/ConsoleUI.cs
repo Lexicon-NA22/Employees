@@ -26,9 +26,11 @@ namespace Employees
 
     public class MockUI : IUI
     {
+        private static string defaultGetInput = "1";
+        public static string SetGetInput { private get; set; } = defaultGetInput;
         public string GetStringInput()
         {
-            return "1";
+            return SetGetInput;
         }
 
         public void PrintString(string message)
