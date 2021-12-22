@@ -43,7 +43,19 @@ namespace EmployeesTests
 
               Assert.AreEqual(expected, actual);
 
-        } 
+        }
+
+        [TestMethod]
+        [DataRow("5")]
+        [DataRow("10")]
+        [DataRow("15")]
+        public void AskForUInt(string value)
+        {
+            ui.Setup(u => u.GetStringInput()).Returns(value);
+            var actual = Util.AskForUInt("Salary ", ui.Object);
+
+            Assert.AreEqual(uint.Parse(value), actual);
+        }
         
     }
 }
